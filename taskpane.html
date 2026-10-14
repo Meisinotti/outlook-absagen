@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bewerbungsabsagen</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="templates.js?v=1"></script>
+  <script src="taskpane.js?v=1"></script>
+  <style>
+    :root { --bg:#fff; --fg:#1b1b1b; --muted:#616161; --line:#e0e0e0; --accent:#0f6cbd; --accent-bg:#ebf3fc;
+            --ok:#0e700e; --ok-bg:#f1faf1; --warn:#8a5a00; --warn-bg:#fff9f0; --err:#b10e1c; --err-bg:#fdf3f4; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1f1f1f; --fg:#f0f0f0; --muted:#adadad; --line:#3d3d3d; --accent:#479ef5; --accent-bg:#1a2a3d;
+              --ok:#54b054; --ok-bg:#1c2b1c; --warn:#e8b14a; --warn-bg:#33291a; --err:#f1707b; --err-bg:#3a1e21; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:16px; background:var(--bg); color:var(--fg);
+           font-family: Aptos, "Segoe UI", -apple-system, Helvetica, Arial, sans-serif; font-size:14px; }
+    h1 { font-size:16px; margin:0 0 4px; }
+    p.hinweis { color:var(--muted); margin:0 0 16px; font-size:12px; }
+    h2 { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:16px 0 8px; }
+    button { display:block; width:100%; text-align:left; padding:10px 12px; margin:0 0 8px;
+             border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg);
+             font:inherit; cursor:pointer; }
+    button:hover:not(:disabled) { border-color:var(--accent); background:var(--accent-bg); }
+    button:disabled { opacity:.5; cursor:default; }
+    button strong { display:block; }
+    button span { display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+    .status { margin-top:16px; padding:10px 12px; border-radius:6px; font-size:13px; background:var(--accent-bg); }
+    .status.ok { background:var(--ok-bg); color:var(--ok); }
+    .status.warnung { background:var(--warn-bg); color:var(--warn); }
+    .status.fehler { background:var(--err-bg); color:var(--err); }
+  </style>
+</head>
+<body>
+  <h1>Bewerbungsabsage</h1>
+  <p class="hinweis">Fügt den Text oben in die Antwort ein und setzt BCC an <b id="bcc"></b>. Gesendet wird erst, wenn Sie auf „Senden“ klicken.</p>
+
+  <h2>Deutsch</h2>
+  <button data-vorlage="standard_de" disabled><strong>Standardabsage</strong><span>Keine passende Stelle</span></button>
+  <button data-vorlage="werkstudent_de" disabled><strong>Werkstudentabsage</strong><span>Verweis auf Ordix</span></button>
+
+  <h2>English</h2>
+  <button data-vorlage="standard_en" disabled><strong>Standard rejection</strong><span>No matching vacancy</span></button>
+  <button data-vorlage="werkstudent_en" disabled><strong>Working student rejection</strong><span>Referral to Ordix</span></button>
+
+  <div id="status" class="status">Wird geladen …</div>
+</body>
+</html>
